@@ -43,13 +43,13 @@ curl -H 'Content-Type: application/x-ndjson' -XPOST 'localhost:9200/shakespeare/
 
 ## Search
 - Buscar en el campo por defecto `_all`:
-  - http://localhost:9200/shakespeare/_search?pretty=true&q=sword
+  - <http://localhost:9200/shakespeare/_search?pretty=true&q=sword>
 - Busqueda compleja con operador, frase exacta y boost
-  - http://localhost:9200/shakespeare/_search?pretty=true&q=text_entry:battle OR speaker:"EDMUND"^2
-  - http://localhost:9200/shakespeare/_search?pretty=true&q=text_entry:king AND play_name:("King Lear" OR "Pericle")
+  - <http://localhost:9200/shakespeare/_search?pretty=true&q=text_entry:battle OR speaker:"EDMUND"^2>
+  - <http://localhost:9200/shakespeare/_search?pretty=true&q=text_entry:king AND play_name:("King Lear" OR "Pericle")>
 - Comodines:
-  - http://localhost:9200/shakespeare/_search?pretty=true&q=text_entry:??f?mous
+  - <http://localhost:9200/shakespeare/_search?pretty=true&q=text_entry:??f?mous>
 - Fuzziness:
-  - http://localhost:9200/shakespeare/_search?pretty=true&q=play_name:kong lea~3
+  - <http://localhost:9200/shakespeare/_search?pretty=true&q=play_name:kong lea~3>
   
 ## Queries
