@@ -152,3 +152,12 @@ curl -XGET http://localhost:9200/shakespeare/_search?pretty=true --header "Conte
 }
 ';
 ```
+
+## Extra
+- https://www.elastic.co/guide/en/kibana/current/windows.html
+```
+sudo apt-get install apt-transport-https
+echo "deb https://artifacts.elastic.co/packages/5.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-5.x.list
+sudo apt-get update && sudo apt-get install kibana
+kibana
+```
