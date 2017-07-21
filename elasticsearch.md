@@ -1,4 +1,4 @@
-# elastic_setup
+# Elastic Search
 
 ## Instalar
 
