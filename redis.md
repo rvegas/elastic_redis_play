@@ -3,27 +3,54 @@
 ## Instalar
 
 ```
+sudo apt-get install redis-server
+redis-cli monitor
+redis-cli
 ```
 
 ## Configurar
 ```
+sudo vim /etc/redis/redis.conf
 ```
-Cambiar:
 
-## Manipular Documentos
-- Crear un índice:
+## Manipular Datos
+- Crear/Modificar un key:value
 ```
+SET key1 value
 ```
-- Insertar un Documento:
+
+- Obtener el valor de un key
 ```
+GET key1
 ```
-- Ver un Documento:
- - <http://localhost:9200/shakespeare/line/AV1kDezKznRrr8dRARwx?pretty=true>
-- Modificar Parcialmente un Documento:
+
+- Otros comandos utiles para key:value
 ```
+DEL key
+SETNX (set if not exists) key
+SET key2 10
+INCR key2 (atomic)
+INCR key2
+INCR key2
+GET key2
 ```
-- Modificar Completamente un Documento:
+
+- Nota sobre INCR y otras operaciones atómicas:
 ```
+x = GET users (13)
+y = GET users (13)
+
+x = x + 1 (x es 14)
+y = y + 1 (y es 14)
+
+SET users x (users es 14)
+SET users y (users es 14)
+```
+- Crear y manipular listas:
+```
+LPUSH users ricardo (users es 'ricardo')
+LPUSH users luisa (users es 'luisa','ricardo')
+LPUSH users pedro (users es 'pedro','luisa','ricardo')
 ```
 
 ## Insertar Datos en Batch
