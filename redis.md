@@ -166,7 +166,11 @@ echo "deb https://repos.influxdata.com/${DISTRIB_ID,,} ${DISTRIB_CODENAME} stabl
 wget https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana_4.4.1_amd64.deb
 sudo apt-get install -y adduser libfontconfig
 sudo dpkg -i grafana_4.4.1_amd64.deb
+```
+- http://localhost:3000/ [admin:admin]
 
+- Creemos un visor de precios de bitcoin:
+```
 sudo apt-get install python-virtualenv
 virtualenv bitfana
 source bitfana/bin/activate
@@ -182,9 +186,8 @@ from influxdb import InfluxDBClient
 from datetime import datetime
 from time import sleep
 
-client = InfluxDBClient('localhost', 8086, 'root', 'root', 'bitcoin_price2')
-client.create_database('bitcoin_price2')
-
+client = InfluxDBClient('localhost', 8086, 'root', 'root', 'bitcoin_price')
+client.create_database('bitcoin_price')
 
 now = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
 
