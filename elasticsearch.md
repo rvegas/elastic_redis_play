@@ -6,6 +6,7 @@ Instalar Virtualbox: https://www.virtualbox.org/wiki/Downloads
 Instalar Vagrant: https://www.vagrantup.com/downloads.html
 ```
 vagrant init ubuntu/trusty64
+# Descomentar config.vm.network "private_network", ip: "192.168.33.10" en Vagrantfile
 vagrant up
 ```
 
