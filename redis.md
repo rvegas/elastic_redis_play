@@ -164,10 +164,12 @@ source /etc/lsb-release
 echo "deb https://repos.influxdata.com/${DISTRIB_ID,,} ${DISTRIB_CODENAME} stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
 sudo apt-get update
 sudo apt-get install influxdb
+sudo service influxdb start
 
 wget https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana_4.4.1_amd64.deb
 sudo apt-get install -y adduser libfontconfig
 sudo dpkg -i grafana_4.4.1_amd64.deb
+sudo service grafana start
 ```
 - http://localhost:3000/ [admin:admin]
 
@@ -191,11 +193,10 @@ from time import sleep
 client = InfluxDBClient('localhost', 8086, 'root', 'root', 'bitcoin_price')
 client.create_database('bitcoin_price')
 
-now = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
-
 while True:
         current_price = Bitfinex().get_current_price()
 
+        now = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
         print current_price
         json_body = [
             {
