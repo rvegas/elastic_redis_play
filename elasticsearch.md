@@ -2,6 +2,7 @@
 
 ## Vagrant
 Instalar Virtualbox: https://www.virtualbox.org/wiki/Downloads
+Instalar Vagrant: https://www.vagrantup.com/downloads.html
 ```
 vagrant init ubuntu/trusty64
 vagrant up
