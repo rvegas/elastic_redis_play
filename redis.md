@@ -166,4 +166,40 @@ echo "deb https://repos.influxdata.com/${DISTRIB_ID,,} ${DISTRIB_CODENAME} stabl
 wget https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana_4.4.1_amd64.deb
 sudo apt-get install -y adduser libfontconfig
 sudo dpkg -i grafana_4.4.1_amd64.deb
+
+sudo apt-get install python-virtualenv
+virtualenv bitfana
+source bitfana/bin/activate
+pip install influxdb
+pip install bitcoin-price-api
+vim run.py
+```
+
+Copy into run.py:
+```
+from exchanges.bitfinex import Bitfinex
+from influxdb import InfluxDBClient
+from datetime import datetime
+
+client = InfluxDBClient('localhost', 8086, 'root', 'root', 'bitcoin_price')
+client.create_database('bitcoin_price')
+
+now = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+
+current_price = Bitfinex().get_current_price()
+
+json_body = [
+    {
+        "measurement": "btc_price_usd",
+        "tags": {
+            "provider": "bitfinex",
+        },
+        "time": now,
+        "fields": {
+            "value": float(current_price)
+        }
+    }
+]
+
+client.write_points(json_body)
 ```
