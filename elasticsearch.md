@@ -1,5 +1,12 @@
 # Elastic Search
 
+## Vagrant
+Instalar Virtualbox: https://www.virtualbox.org/wiki/Downloads
+```
+vagrant init ubuntu/trusty64
+vagrant up
+```
+
 ## Instalar
 
 ```
