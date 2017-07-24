@@ -158,3 +158,12 @@ Entregar cookie con el token.
 
 ## Extra
 - http://docs.grafana.org/features/datasources/influxdb
+```
+curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -
+source /etc/lsb-release
+echo "deb https://repos.influxdata.com/${DISTRIB_ID,,} ${DISTRIB_CODENAME} stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
+
+wget https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana_4.4.1_amd64.deb
+sudo apt-get install -y adduser libfontconfig
+sudo dpkg -i grafana_4.4.1_amd64.deb
+```
